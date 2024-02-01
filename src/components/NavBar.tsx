@@ -16,33 +16,41 @@ export default function NavBar() {
     };
 
   const contactNav = Object.entries(contact).map(([key, value]) => (
-    <div key={`contact-${key}`} className="grid grid-cols-3">
+    <React.Fragment key={`contact-${key}`}>
       <div className="col-span-3">{key}</div>
       <div className="col-span-3">{value}</div>
-    </div>
+    </React.Fragment>
   ));
 
   const currentExhibition = currentExhibitionId
     ? exhibitions[currentExhibitionId]
     : null;
-  const exhibitionNav = currentExhibition ? (
-    <div className="grid grid-cols-3">
-      <div>연도</div>
+  const exhibitionNav = (
+    <div className="grid grid-cols-subgrid col-span-3">
+      <div className="col-span-1">연도</div>
       <div className="col-span-2">전시명</div>
-      <div>{currentExhibition.date}</div>
-      <div className="col-span-2">{currentExhibition.name}</div>
+      {currentExhibition ? (
+        <>
+          <div className="col-span-1">{currentExhibition.date}</div>
+          <div className="col-span-2">{currentExhibition.name}</div>
+        </>
+      ) : (
+        Object.entries(exhibitions).map(([exhibitionId, exhibition]) => (
+          <a
+            key={`exhibition-${exhibitionId}`}
+            className="grid grid-cols-subgrid col-span-3"
+            href={`/${exhibitionId}`}
+          >
+            <div className="col-span-1">{exhibition.date}</div>
+            <div className="col-span-2">{exhibition.name}</div>
+          </a>
+        ))
+      )}
     </div>
-  ) : (
-    Object.entries(exhibitions).map(([exhibitionId, exhibition]) => (
-      <div key={`exhibition-${exhibitionId}`} className="grid grid-cols-3">
-        <div>{exhibition.date}</div>
-        <div className="col-span-2">{exhibition.name}</div>
-      </div>
-    ))
   );
 
   const artworkNav = currentExhibition ? (
-    <div className="grid grid-cols-3">
+    <div className="grid grid-cols-subgrid col-span-3">
       <div>번호</div>
       <div>작가명</div>
       <div>작품명</div>
@@ -67,7 +75,7 @@ export default function NavBar() {
   ) : null;
 
   return (
-    <div>
+    <div className="grid grid-cols-3">
       {contactNav}
       {exhibitionNav}
       {artworkNav}
