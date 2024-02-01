@@ -16,73 +16,61 @@ export default function NavBar() {
     };
 
   const contactNav = Object.entries(contact).map(([key, value]) => (
-    <React.Fragment key={`contact-${key}`}>
-      <tr key={`contact-${key}-key`}>
-        <th colSpan={3}>{key}</th>
-      </tr>
-      <tr key={`contact-${key}-value`}>
-        <td colSpan={3}>{value}</td>
-      </tr>
-    </React.Fragment>
+    <div key={`contact-${key}`} className="grid grid-cols-3">
+      <div className="col-span-3">{key}</div>
+      <div className="col-span-3">{value}</div>
+    </div>
   ));
 
   const currentExhibition = currentExhibitionId
     ? exhibitions[currentExhibitionId]
     : null;
-  const exhibitionNav = (
-    <>
-      <tr key="exhibition-header">
-        <th>연도</th>
-        <th colSpan={2}>전시명</th>
-      </tr>
-      {currentExhibition ? (
-        <tr key={`exhibition-${currentExhibitionId}`}>
-          <td>{currentExhibition.date}</td>
-          <td colSpan={2}>{currentExhibition.name}</td>
-        </tr>
-      ) : (
-        Object.entries(exhibitions).map(([exhibitionId, exhibition]) => {
-          return (
-            <tr key={`exhibition-${exhibitionId}`}>
-              <td>{exhibition.date}</td>
-              <td colSpan={2}>{exhibition.name}</td>
-            </tr>
-          );
-        })
-      )}
-    </>
+  const exhibitionNav = currentExhibition ? (
+    <div className="grid grid-cols-3">
+      <div>연도</div>
+      <div className="col-span-2">전시명</div>
+      <div>{currentExhibition.date}</div>
+      <div className="col-span-2">{currentExhibition.name}</div>
+    </div>
+  ) : (
+    Object.entries(exhibitions).map(([exhibitionId, exhibition]) => (
+      <div key={`exhibition-${exhibitionId}`} className="grid grid-cols-3">
+        <div>{exhibition.date}</div>
+        <div className="col-span-2">{exhibition.name}</div>
+      </div>
+    ))
   );
 
   const artworkNav = currentExhibition ? (
-    <>
-      <tr key="artwork-header">
-        <th>번호</th>
-        <th>작가명</th>
-        <th>작품명</th>
-      </tr>
+    <div className="grid grid-cols-3">
+      <div>번호</div>
+      <div>작가명</div>
+      <div>작품명</div>
       {currentExhibition.artists.map((artist, artistIndex) =>
         artist.artworks.map((artwork, artworkIndex) => (
-          <tr key={`artist-${artistIndex}-artwork-${artworkIndex}`}>
+          <>
             {artworkIndex === 0 ? (
               <>
-                <td rowSpan={artist.artworks.length}>{artistIndex + 1}</td>
-                <td rowSpan={artist.artworks.length}>{artist.name}</td>
+                <div className={`row-span-${artist.artworks.length}`}>
+                  {artistIndex + 1}
+                </div>
+                <div className={`row-span-${artist.artworks.length}`}>
+                  {artist.name}
+                </div>
               </>
             ) : null}
-            <td>{artwork}</td>
-          </tr>
+            <div>{artwork}</div>
+          </>
         ))
       )}
-    </>
+    </div>
   ) : null;
 
   return (
-    <table>
-      <tbody>
-        {contactNav}
-        {exhibitionNav}
-        {artworkNav}
-      </tbody>
-    </table>
+    <div>
+      {contactNav}
+      {exhibitionNav}
+      {artworkNav}
+    </div>
   );
 }
