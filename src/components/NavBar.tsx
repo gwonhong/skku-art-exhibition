@@ -9,11 +9,9 @@ import exhibitionJson from "@/exhibitions.json";
 export default function NavBar() {
   const contact: Contact = contactJson;
   const exhibitions: Exhibitions = exhibitionJson;
-  const { exhibitionId: currentExhibitionId, artistId: currentArtistId } =
-    useParams() as {
-      exhibitionId: string | undefined;
-      artistId: string | undefined;
-    };
+  const { exhibitionId: currentExhibitionId } = useParams() as {
+    exhibitionId: string | undefined;
+  };
 
   const contactNav = Object.entries(contact).map(([key, value]) => (
     <React.Fragment key={`contact-${key}`}>
@@ -53,33 +51,57 @@ export default function NavBar() {
     </div>
   );
 
+  const googleDriveFolderRegex =
+    /https:\/\/drive\.google\.com\/drive\/folders\/([a-zA-Z0-9_-]+)\?usp=share_link/;
   const artworkNav = currentExhibition ? (
     <div className="grid grid-cols-subgrid col-span-3">
       <div>번호</div>
       <div>작가명</div>
       <div>작품명</div>
-      {currentExhibition.artists.map((artist, artistIndex) =>
-        artist.artworks.map((artwork, artworkIndex) => (
-          <>
-            {artworkIndex === 0 ? (
-              <>
-                <div className={`row-span-${artist.artworks.length}`}>
-                  {artistIndex + 1}
-                </div>
-                <div className={`row-span-${artist.artworks.length}`}>
-                  {artist.name}
-                </div>
-              </>
-            ) : null}
-            <div>{artwork}</div>
-          </>
-        ))
-      )}
+      {currentExhibition.artists.map((artist, artistIndex) => {
+        const link = artist.link;
+        const match = link.match(googleDriveFolderRegex);
+        let googleDriveFolderId: string | undefined;
+        if (match) {
+          googleDriveFolderId = match[1];
+        } else {
+          //   console.error(
+          //     `Failed to extract Google Drive folder ID from link of [${artist.name}]`
+          //   );
+        }
+        return (
+          <a
+            key={`artist-${artistIndex}`}
+            className="grid grid-cols-subgrid col-span-3"
+            href={`/${currentExhibitionId}/${googleDriveFolderId}`}
+          >
+            {artist.artworks.map((artwork, artworkIndex) => (
+              <React.Fragment key={`artwork-${artworkIndex}`}>
+                {artworkIndex === 0 ? (
+                  <>
+                    <div
+                      className={`row-start-1 row-end-${artist.artworks.length}`}
+                    >
+                      {artistIndex + 1}
+                    </div>
+                    <div
+                      className={`row-start-1 row-end-${artist.artworks.length}`}
+                    >
+                      {artist.name}
+                    </div>
+                  </>
+                ) : null}
+                <div className="col-start-3">{artwork}</div>
+              </React.Fragment>
+            ))}
+          </a>
+        );
+      })}
     </div>
   ) : null;
 
   return (
-    <div className="grid grid-cols-3">
+    <div className="grid grid-cols-3 border border-black">
       {contactNav}
       {exhibitionNav}
       {artworkNav}
