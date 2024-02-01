@@ -6,7 +6,7 @@ import { Contact, Exhibitions } from "@/types";
 import contactJson from "@/contact.json";
 import exhibitionJson from "@/exhibitions.json";
 
-function NavBar() {
+export default function NavBar() {
   const contact: Contact = contactJson;
   const exhibitions: Exhibitions = exhibitionJson;
   const { exhibitionId: currentExhibitionId } = useParams() as {
@@ -24,13 +24,13 @@ function NavBar() {
     ? exhibitions[currentExhibitionId]
     : null;
   const exhibitionNav = (
-    <div className="grid grid-cols-subgrid col-span-3">
+    <>
       <div className="col-span-1">연도</div>
       <div className="col-span-2">전시명</div>
       {currentExhibition ? (
         <a
           key={`exhibition-${currentExhibitionId}`}
-          className="grid grid-cols-subgrid col-span-3"
+          className="grid grid-cols-subgrid col-span-3 divide-x divide-black"
           href={"/"}
         >
           <div className="col-span-1">{currentExhibition.date}</div>
@@ -40,7 +40,7 @@ function NavBar() {
         Object.entries(exhibitions).map(([exhibitionId, exhibition]) => (
           <a
             key={`exhibition-${exhibitionId}`}
-            className="grid grid-cols-subgrid col-span-3"
+            className="grid grid-cols-subgrid col-span-3 divide-x divide-black"
             href={`/${exhibitionId}`}
           >
             <div className="col-span-1">{exhibition.date}</div>
@@ -48,13 +48,13 @@ function NavBar() {
           </a>
         ))
       )}
-    </div>
+    </>
   );
 
   const googleDriveFolderRegex =
     /https:\/\/drive\.google\.com\/drive\/folders\/([a-zA-Z0-9_-]+)\?usp=share_link/;
   const artworkNav = currentExhibition ? (
-    <div className="grid grid-cols-subgrid col-span-3">
+    <>
       <div>번호</div>
       <div>작가명</div>
       <div>작품명</div>
@@ -72,32 +72,28 @@ function NavBar() {
         return (
           <a
             key={`artist-${artistIndex}`}
-            className="grid grid-cols-subgrid col-span-3"
+            className="grid grid-cols-subgrid col-span-3 divide-x divide-black"
             href={`/${currentExhibitionId}/${googleDriveFolderId}`}
           >
+            <div
+              className={`row-span-${artist.artworks.length} expanded border-right-black`}
+            >
+              {artistIndex + 1}
+            </div>
+            <div className={`row-span-${artist.artworks.length} expanded`}>
+              {artist.name}
+            </div>
             {artist.artworks.map((artwork, artworkIndex) => (
-              <React.Fragment key={`artwork-${artworkIndex}`}>
-                {artworkIndex === 0 ? (
-                  <>
-                    <div className={`row-span-${artist.artworks.length}`}>
-                      {artistIndex + 1}
-                    </div>
-                    <div className={`row-span-${artist.artworks.length}`}>
-                      {artist.name}
-                    </div>
-                  </>
-                ) : null}
-                <div className="col-start-3">{artwork}</div>
-              </React.Fragment>
+              <div key={`artwork-${artworkIndex}`} className={artworkIndex !== 0 ? "border-t border-black" : ""}>{artwork}</div>
             ))}
           </a>
         );
       })}
-    </div>
+    </>
   ) : null;
 
   return (
-    <nav className="grid grid-cols-3">
+    <nav className="grid grid-cols-[4rem_6rem_12rem] border border-black divide-x divide-y divide-black">
       {contactNav}
       {exhibitionNav}
       {artworkNav}
@@ -105,7 +101,7 @@ function NavBar() {
   );
 }
 
-export default function NavBarTable() {
+function NavBarTable() {
   const contact: Contact = contactJson;
   const exhibitions: Exhibitions = exhibitionJson;
   const { exhibitionId: currentExhibitionId } = useParams() as {
@@ -120,7 +116,7 @@ export default function NavBarTable() {
       <tr key={`contact-${key}-value`}>
         <td colSpan={3}>{value}</td>
       </tr>
-    </React.Fragment >
+    </React.Fragment>
   ));
 
   const currentExhibition = currentExhibitionId
@@ -213,7 +209,7 @@ export default function NavBarTable() {
 
   return (
     <nav>
-      <table>
+      <table className="border-collapse border border-black">
         <tbody>
           {contactRows}
           {exhibitionRows}
