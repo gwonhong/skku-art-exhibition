@@ -30,10 +30,14 @@ export default function NavBar() {
       <div className="col-span-1">연도</div>
       <div className="col-span-2">전시명</div>
       {currentExhibition ? (
-        <>
+        <a
+          key={`exhibition-${currentExhibitionId}`}
+          className="grid grid-cols-subgrid col-span-3"
+          href={"/"}
+        >
           <div className="col-span-1">{currentExhibition.date}</div>
           <div className="col-span-2">{currentExhibition.name}</div>
-        </>
+        </a>
       ) : (
         Object.entries(exhibitions).map(([exhibitionId, exhibition]) => (
           <a
