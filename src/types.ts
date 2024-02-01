@@ -13,7 +13,3 @@ export type Exhibition = {
   date: string;
   artists: Artist[];
 };
-
-export type Exhibitions = {
-  [key: string]: Exhibition;
-};
