@@ -18,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} flex h-screen`}>
-        <div className="h-full overflow-y-auto text-right">
+        <div className="h-full overflow-y-auto text-right pr-4">
           <NavBar />
         </div>
-        <div className="h-full overflow-y-auto flex-1">{children}</div>
+        <div className="h-full overflow-y-auto flex-1 border-l border-black">{children}</div>
       </body>
     </html>
   );
