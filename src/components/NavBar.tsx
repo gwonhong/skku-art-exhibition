@@ -79,14 +79,10 @@ export default function NavBar() {
               <React.Fragment key={`artwork-${artworkIndex}`}>
                 {artworkIndex === 0 ? (
                   <>
-                    <div
-                      className={`row-start-1 row-end-${artist.artworks.length}`}
-                    >
+                    <div className={`row-span-${artist.artworks.length}`}>
                       {artistIndex + 1}
                     </div>
-                    <div
-                      className={`row-start-1 row-end-${artist.artworks.length}`}
-                    >
+                    <div className={`row-span-${artist.artworks.length}`}>
                       {artist.name}
                     </div>
                   </>
@@ -101,10 +97,10 @@ export default function NavBar() {
   ) : null;
 
   return (
-    <div className="grid grid-cols-3 border border-black">
+    <nav className="grid grid-cols-3">
       {contactNav}
       {exhibitionNav}
       {artworkNav}
-    </div>
+    </nav>
   );
 }
