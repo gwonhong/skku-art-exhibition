@@ -15,7 +15,7 @@ export default function NavBar() {
 
   const contactNav = Object.entries(contact).map(([key, value]) => (
     <React.Fragment key={`contact-${key}`}>
-      <div className="col-span-3">{key}</div>
+      <div className="col-span-3 font-bold bg-[--color-1]">{key}</div>
       <div className="col-span-3">{value}</div>
     </React.Fragment>
   ));
@@ -25,12 +25,12 @@ export default function NavBar() {
     : null;
   const exhibitionNav = (
     <>
-      <div className="col-span-1">연도</div>
-      <div className="col-span-2">전시명</div>
+      <div className="col-span-1 font-bold bg-[--color-1]">연도</div>
+      <div className="col-span-2 font-bold bg-[--color-1]">전시명</div>
       {currentExhibition ? (
         <a
           key={`exhibition-${currentExhibitionId}`}
-          className="grid grid-cols-subgrid col-span-3 divide-x divide-black"
+          className="grid grid-cols-subgrid col-span-3 divide-x divide-black bg-[--color-2]"
           href={"/"}
         >
           <div className="col-span-1">{currentExhibition.date}</div>
@@ -40,7 +40,7 @@ export default function NavBar() {
         Object.entries(exhibitions).map(([exhibitionId, exhibition]) => (
           <a
             key={`exhibition-${exhibitionId}`}
-            className="grid grid-cols-subgrid col-span-3 divide-x divide-black"
+            className="grid grid-cols-subgrid col-span-3 divide-x divide-black bg-[--color-2]"
             href={`/${exhibitionId}`}
           >
             <div className="col-span-1">{exhibition.date}</div>
@@ -55,9 +55,9 @@ export default function NavBar() {
     /https:\/\/drive\.google\.com\/drive\/folders\/([a-zA-Z0-9_-]+)\?usp=share_link/;
   const artworkNav = currentExhibition ? (
     <>
-      <div>번호</div>
-      <div>작가명</div>
-      <div>작품명</div>
+      <div className="font-bold bg-[--color-1]">번호</div>
+      <div className="font-bold bg-[--color-1]">작가명</div>
+      <div className="font-bold bg-[--color-1]">작품명</div>
       {currentExhibition.artists.map((artist, artistIndex) => {
         const link = artist.link;
         const match = link.match(googleDriveFolderRegex);
@@ -72,7 +72,7 @@ export default function NavBar() {
         return (
           <a
             key={`artist-${artistIndex}`}
-            className="grid grid-cols-subgrid col-span-3 divide-x divide-black"
+            className={"grid grid-cols-subgrid col-span-3 divide-x divide-black" + (artistIndex % 2 ? " bg-[--color-2]" : "")}
             href={`/${currentExhibitionId}/${googleDriveFolderId}`}
           >
             <div
@@ -80,11 +80,21 @@ export default function NavBar() {
             >
               {artistIndex + 1}
             </div>
-            <div className={`row-span-${artist.artworks.length} expanded`}>
+            <div
+              className={`row-span-${artist.artworks.length} expanded border-right-black`}
+            >
               {artist.name}
             </div>
             {artist.artworks.map((artwork, artworkIndex) => (
-              <div key={`artwork-${artworkIndex}`} className={artworkIndex !== 0 ? "border-t border-black" : ""}>{artwork}</div>
+              <div
+                key={`artwork-${artworkIndex}`}
+                className={
+                  "col-start-3 row-span-1" +
+                  (artworkIndex !== 0 ? " border-t border-black" : "")
+                }
+              >
+                {artwork}
+              </div>
             ))}
           </a>
         );
@@ -97,125 +107,131 @@ export default function NavBar() {
       {contactNav}
       {exhibitionNav}
       {artworkNav}
+      {/* <div className="grid grid-cols-subgrid col-span-3 divide-x divide-black">
+        <div className="row-span-2 expand">a</div>
+        <div className="row-span-2 expand">b</div>
+        <div>c</div>
+        <div>d</div>
+      </div> */}
     </nav>
   );
 }
 
-function NavBarTable() {
-  const contact: Contact = contactJson;
-  const exhibitions: Exhibitions = exhibitionJson;
-  const { exhibitionId: currentExhibitionId } = useParams() as {
-    exhibitionId: string | undefined;
-  };
+// function NavBarTable() {
+//   const contact: Contact = contactJson;
+//   const exhibitions: Exhibitions = exhibitionJson;
+//   const { exhibitionId: currentExhibitionId } = useParams() as {
+//     exhibitionId: string | undefined;
+//   };
 
-  const contactRows = Object.entries(contact).map(([key, value]) => (
-    <React.Fragment key={`contact-${key}`}>
-      <tr key={`contact-${key}-header`}>
-        <th colSpan={3}>{key}</th>
-      </tr>
-      <tr key={`contact-${key}-value`}>
-        <td colSpan={3}>{value}</td>
-      </tr>
-    </React.Fragment>
-  ));
+//   const contactRows = Object.entries(contact).map(([key, value]) => (
+//     <React.Fragment key={`contact-${key}`}>
+//       <tr key={`contact-${key}-header`}>
+//         <th colSpan={3}>{key}</th>
+//       </tr>
+//       <tr key={`contact-${key}-value`}>
+//         <td colSpan={3}>{value}</td>
+//       </tr>
+//     </React.Fragment>
+//   ));
 
-  const currentExhibition = currentExhibitionId
-    ? exhibitions[currentExhibitionId]
-    : null;
-  const exhibitionRows = (
-    <>
-      <tr key="exhibition-header">
-        <th>연도</th>
-        <th colSpan={2}>전시명</th>
-      </tr>
-      {currentExhibition ? (
-        <tr key={`exhibition-${currentExhibitionId}`}>
-          <td>
-            <a href={`/${currentExhibitionId}`}>{currentExhibition.date}</a>
-          </td>
-          <td colSpan={2}>
-            <a href={`/${currentExhibitionId}`}>{currentExhibition.name}</a>
-          </td>
-        </tr>
-      ) : (
-        Object.entries(exhibitions).map(([exhibitionId, exhibition]) => (
-          <tr key={`exhibition-${exhibitionId}`}>
-            <td>
-              <a href={`/${exhibitionId}`}>{exhibition.date}</a>
-            </td>
-            <td>
-              <a href={`/${exhibitionId}`}>{exhibition.name}</a>
-            </td>
-          </tr>
-        ))
-      )}
-    </>
-  );
+//   const currentExhibition = currentExhibitionId
+//     ? exhibitions[currentExhibitionId]
+//     : null;
+//   const exhibitionRows = (
+//     <>
+//       <tr key="exhibition-header">
+//         <th>연도</th>
+//         <th colSpan={2}>전시명</th>
+//       </tr>
+//       {currentExhibition ? (
+//         <tr key={`exhibition-${currentExhibitionId}`}>
+//           <td>
+//             <a href={`/${currentExhibitionId}`}>{currentExhibition.date}</a>
+//           </td>
+//           <td colSpan={2}>
+//             <a href={`/${currentExhibitionId}`}>{currentExhibition.name}</a>
+//           </td>
+//         </tr>
+//       ) : (
+//         Object.entries(exhibitions).map(([exhibitionId, exhibition]) => (
+//           <tr key={`exhibition-${exhibitionId}`}>
+//             <td>
+//               <a href={`/${exhibitionId}`}>{exhibition.date}</a>
+//             </td>
+//             <td>
+//               <a href={`/${exhibitionId}`}>{exhibition.name}</a>
+//             </td>
+//           </tr>
+//         ))
+//       )}
+//     </>
+//   );
 
-  const googleDriveFolderRegex =
-    /https:\/\/drive\.google\.com\/drive\/folders\/([a-zA-Z0-9_-]+)\?usp=share_link/;
-  const artworkRows = currentExhibition ? (
-    <>
-      <tr>
-        <th>번호</th>
-        <th>작가명</th>
-        <th>작품명</th>
-      </tr>
-      {currentExhibition.artists.map((artist, artistIndex) => {
-        const link = artist.link;
-        const match = link.match(googleDriveFolderRegex);
-        let googleDriveFolderId: string | undefined;
-        if (match) {
-          googleDriveFolderId = match[1];
-        } else {
-          //   console.error(
-          //     `Failed to extract Google Drive folder ID from link of [${artist.name}]`
-          //   );
-        }
-        return (
-          <React.Fragment key={`artist-${artistIndex}`}>
-            {artist.artworks.map((artwork, artworkIndex) => (
-              <tr key={`artist-${artistIndex}-artwork-${artworkIndex}`}>
-                {artworkIndex === 0 ? (
-                  <>
-                    <td rowSpan={artist.artworks.length}>
-                      <a
-                        href={`/${currentExhibitionId}/${googleDriveFolderId}`}
-                      >
-                        {artistIndex + 1}
-                      </a>
-                    </td>
-                    <td rowSpan={artist.artworks.length}>
-                      <a
-                        href={`/${currentExhibitionId}/${googleDriveFolderId}`}
-                      >
-                        {artist.name}
-                      </a>
-                    </td>
-                  </>
-                ) : null}
-                <td>
-                  <a href={`/${currentExhibitionId}/${googleDriveFolderId}`}>
-                    {artwork}
-                  </a>
-                </td>
-              </tr>
-            ))}
-          </React.Fragment>
-        );
-      })}
-    </>
-  ) : null;
+//   const googleDriveFolderRegex =
+//     /https:\/\/drive\.google\.com\/drive\/folders\/([a-zA-Z0-9_-]+)\?usp=share_link/;
+//   const artworkRows = currentExhibition ? (
+//     <>
+//       <tr>
+//         <th>번호</th>
+//         <th>작가명</th>
+//         <th>작품명</th>
+//       </tr>
+//       {currentExhibition.artists.map((artist, artistIndex) => {
+//         const link = artist.link;
+//         const match = link.match(googleDriveFolderRegex);
+//         let googleDriveFolderId: string | undefined;
+//         if (match) {
+//           googleDriveFolderId = match[1];
+//         } else {
+//           //   console.error(
+//           //     `Failed to extract Google Drive folder ID from link of [${artist.name}]`
+//           //   );
+//         }
+//         return (
+//           <React.Fragment key={`artist-${artistIndex}`}>
+//             {artist.artworks.map((artwork, artworkIndex) => (
+//               <tr key={`artist-${artistIndex}-artwork-${artworkIndex}`}>
+//                 {artworkIndex === 0 ? (
+//                   <>
+//                     <td rowSpan={artist.artworks.length}>
+//                       <a
+//                         href={`/${currentExhibitionId}/${googleDriveFolderId}`}
+//                       >
+//                         {artistIndex + 1}
+//                       </a>
+//                     </td>
+//                     <td rowSpan={artist.artworks.length}>
+//                       <a
+//                         href={`/${currentExhibitionId}/${googleDriveFolderId}`}
+//                       >
+//                         {artist.name}
+//                       </a>
+//                     </td>
+//                   </>
+//                 ) : null}
+//                 <td>
+//                   <a href={`/${currentExhibitionId}/${googleDriveFolderId}`}>
+//                     {artwork}
+//                   </a>
+//                 </td>
+//               </tr>
+//             ))}
+//           </React.Fragment>
+//         );
+//       })}
+//     </>
+//   ) : null;
 
-  return (
-    <nav>
-      <table className="border-collapse border border-black">
-        <tbody>
-          {contactRows}
-          {exhibitionRows}
-          {artworkRows}
-        </tbody>
-      </table>
-    </nav>
-  );
-}
+//   return (
+//     <nav>
+//       <table className="border-collapse border border-black">
+//         <tbody>
+//           {contactRows}
+//           {exhibitionRows}
+//           {artworkRows}
+//         </tbody>
+//       </table>
+//     </nav>
+//   );
+// }
