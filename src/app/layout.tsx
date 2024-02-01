@@ -23,7 +23,7 @@ export default function RootLayout({
         >
           <NavBar />
         </div>
-        <div className="flex-1 overflow-y-auto">{children}</div>
+        <div className="flex-1 h-screen overflow-y-auto">{children}</div>
       </body>
     </html>
   );
