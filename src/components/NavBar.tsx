@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useParams } from "next/navigation";
-import { Contact, Exhibitions, Exhibition, Artist } from "@/types";
+import { Contact, Exhibitions } from "@/types";
 import contactJson from "@/contact.json";
 import exhibitionJson from "@/exhibitions.json";
 
