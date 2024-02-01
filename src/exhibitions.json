@@ -1,0 +1,29 @@
+{
+  "2023": {
+    "date": "2023",
+    "name": "<결산> : 1부 <꼴>, 2부 <틀>",
+    "artists": [
+      {
+        "name": "강수정",
+        "artworks": ["파티클고스트파이프", "헬파이어파이프"],
+        "link": "https://drive.google.com/drive/folders/19_hUWhEXaVJyRw8PCrMZPy6l8jfzbb1W?usp=share_link"
+      },
+      {
+        "name": "강수정",
+        "artworks": ["파티클고스트파이프", "헬파이어파이프"],
+        "link": "https://drive.google.com/drive/folders/19_hUWhEXaVJyRw8PCrMZPy6l8jfzbb1W?usp=share_link"
+      }
+    ]
+  },
+  "2024": {
+    "date": "2024",
+    "name": "test",
+    "artists": [
+      {
+        "name": "테스트",
+        "artworks": ["작품1", "작품2"],
+        "link": "https://drive.google.com/drive/folders/19_hUWhEXaVJyRw8PCrMZPy6l8jfzbb1W?usp=share_link"
+      }
+    ]
+  }
+}
