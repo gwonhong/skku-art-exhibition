@@ -4,10 +4,20 @@ import contactJson from "@/contact.json";
 import exhibitionJson from "@/exhibitions.json";
 import { permanentRedirect } from "next/navigation";
 
+function convertGoogleDriveLink(link: string) {
+  const googleDriveFolderRegex =
+    /https:\/\/drive\.google\.com\/drive\/folders\/(?<googleDriveFolderId>[a-zA-Z0-9_-]+)\?usp=share_link/;
+  const googleDriveFolderId = link.match(googleDriveFolderRegex)?.groups?.googleDriveFolderId;
+
+  return googleDriveFolderId ? `https://drive.google.com/embeddedfolderview?id=${googleDriveFolderId}` : link;
+}
+
 export default function NavBar({
   currentExhibitionDate,
+  setIframeSrc,
 }: {
   currentExhibitionDate: string;
+  setIframeSrc: (src: string) => void;
 }) {
   const contact: Contact = contactJson;
   const exhibitions: Exhibition[] = exhibitionJson;
@@ -50,8 +60,6 @@ export default function NavBar({
     </>
   );
 
-  const googleDriveFolderRegex =
-    /https:\/\/drive\.google\.com\/drive\/folders\/(?<googleDriveFolderId>[a-zA-Z0-9_-]+)\?usp=share_link/;
   const artworkRows = (
     <>
       <tr className="bg-[--color-1]">
@@ -60,40 +68,26 @@ export default function NavBar({
         <th>작품명</th>
       </tr>
       {currentExhibition.artists.map((artist, artistIndex) => {
-        const link = artist.link;
-        const googleDriveFolderId = link.match(googleDriveFolderRegex)?.groups
-          ?.googleDriveFolderId;
-
+        const link = convertGoogleDriveLink(artist.link);
         return (
           <React.Fragment key={`artist-${artistIndex}`}>
             {artist.artworks.map((artwork, artworkIndex) => (
               <tr
                 key={`artist-${artistIndex}-artwork-${artworkIndex}`}
-                className={artistIndex % 2 ? "bg-[--color-2]" : ""}
+                className={"cursor-pointer" + (artistIndex % 2 ? " bg-[--color-2]" : "")}
+                onClick={link ? () => setIframeSrc(link) : undefined}
               >
                 {artworkIndex === 0 ? (
                   <>
                     <td rowSpan={artist.artworks.length} className="align-top">
-                      <a
-                        href={`/${currentExhibitionDate}/${googleDriveFolderId}`}
-                      >
-                        {artistIndex + 1}
-                      </a>
+                      {artistIndex + 1}
                     </td>
                     <td rowSpan={artist.artworks.length} className="align-top">
-                      <a
-                        href={`/${currentExhibitionDate}/${googleDriveFolderId}`}
-                      >
-                        {artist.name}
-                      </a>
+                      {artist.name}
                     </td>
                   </>
                 ) : null}
-                <td>
-                  <a href={`/${currentExhibitionDate}/${googleDriveFolderId}`}>
-                    {artwork}
-                  </a>
-                </td>
+                <td>{artwork}</td>
               </tr>
             ))}
           </React.Fragment>
