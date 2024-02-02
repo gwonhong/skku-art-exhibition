@@ -57,7 +57,7 @@ export default function NavBarArtworks({
     <>
       <tr className="bg-[--color-1]">
         <th>번호</th>
-        <th>작가명</th>
+        <th className="text-left">작가명</th>
         <th>작품명</th>
       </tr>
       {currentExhibition.artists.map((artist, artistIndex) => {
@@ -77,7 +77,7 @@ export default function NavBarArtworks({
                     <td rowSpan={artist.artworks.length} className="align-top">
                       {artistIndex + 1}
                     </td>
-                    <td rowSpan={artist.artworks.length} className="align-top">
+                    <td rowSpan={artist.artworks.length} className="align-top text-left">
                       {artist.name}
                     </td>
                   </>
