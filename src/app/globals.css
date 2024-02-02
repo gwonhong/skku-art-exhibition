@@ -5,7 +5,7 @@
 @layer base {
   table {
     border-collapse: collapse;
-    border: 1px solid black;
+    border-style: hidden;
     text-align: right;
   }
   td, th {
