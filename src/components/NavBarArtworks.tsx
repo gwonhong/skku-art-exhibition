@@ -1,59 +1,52 @@
 import React from "react";
-import { Contact, Exhibition } from "@/types";
-import contactJson from "@/contact.json";
+import { redirect } from "next/navigation";
+
+import { Exhibition } from "@/types";
 import exhibitionJson from "@/exhibitions.json";
-import { permanentRedirect } from "next/navigation";
+
+import NavBar from "@/components/NavBar";
 
 function convertGoogleDriveLink(link: string) {
   const googleDriveFolderRegex =
     /https:\/\/drive\.google\.com\/drive\/folders\/(?<googleDriveFolderId>[a-zA-Z0-9_-]+)\?usp=share_link/;
-  const googleDriveFolderId = link.match(googleDriveFolderRegex)?.groups?.googleDriveFolderId;
+  const googleDriveFolderId = link.match(googleDriveFolderRegex)?.groups
+    ?.googleDriveFolderId;
 
-  return googleDriveFolderId ? `https://drive.google.com/embeddedfolderview?id=${googleDriveFolderId}` : link;
+  return googleDriveFolderId
+    ? `https://drive.google.com/embeddedfolderview?id=${googleDriveFolderId}`
+    : link;
 }
 
-export default function NavBar({
+export default function NavBarArtworks({
   currentExhibitionDate,
   updateIframeSrc,
 }: {
   currentExhibitionDate: string;
   updateIframeSrc: (src: string) => void;
 }) {
-  const contact: Contact = contactJson;
   const exhibitions: Exhibition[] = exhibitionJson;
-
-  const contactRows = Object.entries(contact).map(([key, value]) => (
-    <React.Fragment key={`contact-${key}`}>
-      <tr key={`contact-${key}-header`} className="bg-[--color-1]">
-        <th colSpan={3}>{key}</th>
-      </tr>
-      <tr key={`contact-${key}-value`}>
-        <td colSpan={3}>{value}</td>
-      </tr>
-    </React.Fragment>
-  ));
 
   const currentExhibition = exhibitions.find(
     item => item.date === currentExhibitionDate
   );
   if (currentExhibition === undefined) {
-    permanentRedirect("/");
+    redirect("/");
   }
 
   const exhibitionRows = (
     <>
       <tr key="exhibition-header" className="bg-[--color-1]">
-        <th>연도</th>
-        <th colSpan={2}>전시명</th>
+        <th colSpan={2}>연도</th>
+        <th>전시명</th>
       </tr>
       <tr
         key={`exhibition-${currentExhibitionDate}`}
         className="bg-[--color-2]"
       >
-        <td>
+        <td colSpan={2}>
           <a href={"/"}>{currentExhibition.date}</a>
         </td>
-        <td colSpan={2}>
+        <td>
           <a href={"/"}>{currentExhibition.name}</a>
         </td>
       </tr>
@@ -74,7 +67,9 @@ export default function NavBar({
             {artist.artworks.map((artwork, artworkIndex) => (
               <tr
                 key={`artist-${artistIndex}-artwork-${artworkIndex}`}
-                className={"cursor-pointer" + (artistIndex % 2 ? " bg-[--color-2]" : "")}
+                className={
+                  "cursor-pointer" + (artistIndex % 2 ? " bg-[--color-2]" : "")
+                }
                 onClick={link ? () => updateIframeSrc(link) : undefined}
               >
                 {artworkIndex === 0 ? (
@@ -96,18 +91,5 @@ export default function NavBar({
     </>
   );
 
-  return (
-    <nav className="h-full">
-      <table className="w-96 h-full">
-        <tbody>
-          {contactRows}
-          {exhibitionRows}
-          {artworkRows}
-          <tr>
-            <td colSpan={3} className="h-full"></td>
-          </tr>
-        </tbody>
-      </table>
-    </nav>
-  );
+  return <NavBar exhibitionRows={exhibitionRows} artworkRows={artworkRows} />;
 }
