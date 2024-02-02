@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 성균관대학교 미술학과 전시회 아카이브 웹사이트
+
+2023년부터 시작하여, 이후 매년 있을 전시회 작품들을 아카이빙 하는 웹사이트 입니다.
 
 ## 전시회 목록 파일 구조
 
