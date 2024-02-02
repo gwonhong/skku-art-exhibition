@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import NavBar from "@/components/NavBarArtworks";
+import BodyLayout from "@/components/BodyLayout";
+import NavBarArtworks from "@/components/NavBarArtworks";
 
 export default function Page({
   params,
@@ -20,23 +21,25 @@ export default function Page({
   }
 
   return (
-    <body className={"flex h-screen"}>
-      <div className="h-full overflow-y-auto">
-        <NavBar
+    <BodyLayout
+      leftPane={
+        <NavBarArtworks
           currentExhibitionDate={params.exhibitionDate}
           updateIframeSrc={updateIframeSrc}
         />
-      </div>
-      <div className="h-full overflow-y-auto flex-1 border-l border-black relative">
-        {iframeLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-300 opacity-60"></div>
-        )}
-        <iframe
-          className="w-full h-full"
-          src={iframeSrc}
-          onLoad={() => setIframeLoading(false)}
-        />
-      </div>
-    </body>
+      }
+      rightPane={
+        <>
+          {iframeLoading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-300 opacity-60"></div>
+          )}
+          <iframe
+            className="w-full h-full"
+            src={iframeSrc}
+            onLoad={() => setIframeLoading(false)}
+          />
+        </>
+      }
+    />
   );
 }
