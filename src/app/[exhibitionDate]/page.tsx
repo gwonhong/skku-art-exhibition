@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import NavBar from "@/components/NavBarArtworks";
+import NavBarArtworks from "@/components/NavBarArtworks";
 
 export default function Page({
   params,
@@ -22,7 +22,7 @@ export default function Page({
   return (
     <body className={"flex h-screen"}>
       <div className="h-full overflow-y-auto">
-        <NavBar
+        <NavBarArtworks
           currentExhibitionDate={params.exhibitionDate}
           updateIframeSrc={updateIframeSrc}
         />
