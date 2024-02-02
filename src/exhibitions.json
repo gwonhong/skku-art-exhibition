@@ -5,24 +5,250 @@
     "artists": [
       {
         "name": "강수정",
-        "artworks": ["파티클고스트파이프", "헬파이어파이프"],
-        "link": "https://drive.google.com/drive/folders/19_hUWhEXaVJyRw8PCrMZPy6l8jfzbb1W?usp=share_link"
+        "link": "https://drive.google.com/drive/folders/19_hUWhEXaVJyRw8PCrMZPy6l8jfzbb1W?usp=drive_link",
+        "artworks": ["꿈의 제단"]
+      },
+      {
+        "name": "강예진",
+        "link": "https://drive.google.com/drive/folders/1pIz0nEPP4hvi3mXGPs5o-HN5tDMDfbC_?usp=drive_link",
+        "artworks": ["파티클고스트파이프", "헬파이어파이프"]
       },
       {
         "name": "강정연",
-        "artworks": ["파티클고스트파이프", "헬파이어파이프"],
-        "link": "https://drive.google.com/drive/folders/1SD-RRrYt792T5nTmtZt-njXYOd2c-IUh?usp=share_link"
-      }
-    ]
-  },
-  {
-    "date": "2024",
-    "name": "test",
-    "artists": [
+        "link": "https://drive.google.com/drive/folders/1SD-RRrYt792T5nTmtZt-njXYOd2c-IUh?usp=drive_link",
+        "artworks": ["녹녹"]
+      },
       {
-        "name": "테스트",
-        "artworks": ["작품1", "작품2"],
-        "link": "https://drive.google.com/drive/folders/19_hUWhEXaVJyRw8PCrMZPy6l8jfzbb1W?usp=share_link"
+        "name": "강지효",
+        "link": "https://drive.google.com/drive/folders/1eGF8pxnYJFst4wZhvZZN6_mLVsrWUlJU?usp=drive_link",
+        "artworks": ["마법소녀"]
+      },
+      {
+        "name": "권승주",
+        "link": "https://drive.google.com/drive/folders/1ly3NDUble93CGeYbjRUM3lk2z_nYzo1f?usp=drive_link",
+        "artworks": ["낯선 아파트 상가 ", "울렁이는 교회", "팽창"]
+      },
+      {
+        "name": "김나윤",
+        "link": "https://drive.google.com/drive/folders/1Vzn6vLMTr9IespSdtLhawiFBlf2Oap0c?usp=drive_link",
+        "artworks": [
+          "Untitled(1,2,3,4,5)",
+          "Untitled - 6",
+          "Untitled - 7",
+          "Collection - 1",
+          "Collection - 2",
+          "Collection - 3",
+          "Collection - 4",
+          "Magic Carpet"
+        ]
+      },
+      {
+        "name": "김도유",
+        "link": "https://drive.google.com/drive/folders/1e-TYT8W1MlO5GBQwQxVZU6-OQgbPJQpi?usp=drive_link",
+        "artworks": ["박동", "하루의 어느 때", "도달하지 못할 평행세계"]
+      },
+      {
+        "name": "김민지",
+        "link": "https://drive.google.com/drive/folders/1ArJHz-urR4hA9q6wWg1TyUuKQHXogVwF?usp=drive_link",
+        "artworks": ["시간의 공간화"]
+      },
+      {
+        "name": "김서연",
+        "link": "https://drive.google.com/drive/folders/13bqPpK6XJ3_9szsOSTNiIOwY_cq-3x2U?usp=drive_link",
+        "artworks": [
+          "도파민 소환진-몽타주",
+          "도파민 소환진-우로보로스",
+          "도파민 소환진-아스트랄계",
+          "도파민 소환진-카두세우스",
+          "도파민 소환진-음의 애정"
+        ]
+      },
+      {
+        "name": "김소연",
+        "link": "https://drive.google.com/drive/folders/1kNqi7dLttAz0zb9IL65foutjcBO6nY5A?usp=drive_link",
+        "artworks": ["A:P01102", "망각"]
+      },
+      {
+        "name": "김은강",
+        "link": "https://drive.google.com/drive/folders/1E9oCEzW0_fbXQVmlO9Jx6UPE2f8M32th?usp=drive_link",
+        "artworks": ["당신들", "움직인 자리"]
+      },
+      {
+        "name": "김종산",
+        "link": "https://drive.google.com/drive/folders/1LKK47W7DOVltsLrKG8Y4yJ2qUTFT7X41?usp=drive_link",
+        "artworks": ["Pray and Obey", "기도하고 복종하라"]
+      },
+      {
+        "name": "김준이",
+        "link": "https://drive.google.com/drive/folders/1YF_L0Vsy05b40jgBUi-cMZa32LUddQkT?usp=drive_link",
+        "artworks": [
+          "끝1",
+          "끝2",
+          "끝3",
+          "솟아오르는 것1",
+          "솟아오르는 것2",
+          "솟아오르는 것3",
+          "솟아오르는 것4"
+        ]
+      },
+      {
+        "name": "김하연",
+        "link": "https://drive.google.com/drive/folders/1dVmZ-YCbPSDd_zJzOCJkh8l633XPY_aI?usp=drive_link",
+        "artworks": ["재생하는 기록화1", "재생하는 기록화2", "재생하는 기록화3"]
+      },
+      {
+        "name": "김해빈",
+        "link": "https://drive.google.com/drive/folders/15x5XuHxdtf96c5NltbZNi5oO0NyVTY7p?usp=drive_link",
+        "artworks": ["공(空)", "허(虛)"]
+      },
+      {
+        "name": "남민재",
+        "link": "https://drive.google.com/drive/folders/11FEhamcY4q84YqnXSM4cLjMe2HVP9GTt?usp=drive_link",
+        "artworks": ["우연"]
+      },
+      {
+        "name": "노문희",
+        "link": "https://drive.google.com/drive/folders/1R_3iSAG56Ok4w7J8BmTksTYSi13QvlII?usp=drive_link",
+        "artworks": [
+          "나의 소속은 어딘가1",
+          "나의 소속은 어딘가2",
+          "나의 소속은 어딘가3",
+          "나의 소속은 어딘가4"
+        ]
+      },
+      {
+        "name": "문소윤",
+        "link": "https://drive.google.com/drive/folders/1Lb20GCxQgedJwHqED9OlpcbtkbkktX-T?usp=drive_link",
+        "artworks": ["주-공 시리즈"]
+      },
+      {
+        "name": "배성로",
+        "link": "https://drive.google.com/drive/folders/148GjzO62OaEro_KpofThhBAWzAKV2tz2?usp=drive_link",
+        "artworks": ["미-술쑈 시리즈_액트1~12"]
+      },
+      {
+        "name": "손민경",
+        "link": "https://drive.google.com/drive/folders/1ADkFYUcKFRMrddF9Wl4_VRH-pSBLZOUY?usp=drive_link",
+        "artworks": ["가상장기 시리즈"]
+      },
+      {
+        "name": "송지은",
+        "link": "https://drive.google.com/drive/folders/1SgyXb8hPWvL9MM5xGe7DTpG0YPaWtGq8?usp=drive_link",
+        "artworks": ["겹"]
+      },
+      {
+        "name": "심수현",
+        "link": "https://drive.google.com/drive/folders/1T5C2oIdnSwh5qldcQmQ8L2ym199fN1Wn?usp=drive_link",
+        "artworks": ["비원 생물"]
+      },
+      {
+        "name": "심유라",
+        "link": "https://drive.google.com/drive/folders/1Vk-i7QgTB3QJIKDx_20D7RUQFJwDZxPF?usp=drive_link",
+        "artworks": ["?를 위한 시리즈 1", "?를 위한 시리즈 2"]
+      },
+      {
+        "name": "유수민",
+        "link": "https://drive.google.com/drive/folders/1mSGgpVCD7dbw_YRR5RpWEszzJhybvEtZ?usp=drive_link",
+        "artworks": ["영원의 묵비자연 (默祕自然)"]
+      },
+      {
+        "name": "유현정",
+        "link": "https://drive.google.com/drive/folders/1lHIovgOdHb4Aeodij9yubpXQL5x9qIM_?usp=drive_link",
+        "artworks": [
+          "계단ㄱ0",
+          "계단으로",
+          "계단ㄷ",
+          "계단ㄱ1",
+          "계단ㄴ1",
+          "계단ㄴ0",
+          "계단ㄱ2",
+          "계단ㄱ3"
+        ]
+      },
+      {
+        "name": "윤예인",
+        "link": "https://drive.google.com/drive/folders/1SWJ4NLHemmwx7jQ2L9qzZVCgB38mX2wf?usp=drive_link",
+        "artworks": ["기억하기"]
+      },
+      {
+        "name": "이민경",
+        "link": "https://drive.google.com/drive/folders/1rDbbf-3lHdCAxmBBobgBSY2GYZROHz66?usp=drive_link",
+        "artworks": ["탈피 1", "탈피 2", "탈피"]
+      },
+      {
+        "name": "이수연",
+        "link": "https://drive.google.com/drive/folders/1pnJaszyDw7Rc4OrBtIFFJtxEnn9o6JCZ?usp=drive_link",
+        "artworks": ["Our Hours"]
+      },
+      {
+        "name": "이예림",
+        "link": "https://drive.google.com/drive/folders/19_YSaK6Xvtci-VYBeSAEJGYu_VhWSSpv?usp=drive_link",
+        "artworks": ["조각 파도"]
+      },
+      {
+        "name": "이재은",
+        "link": "https://drive.google.com/drive/folders/1-_-6C1aV9hGZcxCdD6okTyRmzSLwthe8?usp=drive_link",
+        "artworks": [
+          "따라오기 마련이다",
+          "밤훈련",
+          "트래핑",
+          "통증 1",
+          "통증 2"
+        ]
+      },
+      {
+        "name": "이주연",
+        "link": "https://drive.google.com/drive/folders/1tZ6lcUhGIERxgJJXSgaAwCyUWCL5GFLI?usp=drive_link",
+        "artworks": ["해부극장", "oRanGe BooK cLuB"]
+      },
+      {
+        "name": "이지현",
+        "link": "https://drive.google.com/drive/folders/1P9o1_sz4O2xd6FlG9X340tB_CGxFpFnU?usp=drive_link",
+        "artworks": ["탈수패밀리", "탈수제단"]
+      },
+      {
+        "name": "이현경",
+        "link": "https://drive.google.com/drive/folders/18D8y7Lt5G16KYRJxIJBC-E7iXOnUFfcT?usp=drive_link",
+        "artworks": ["연단의 끝"]
+      },
+      {
+        "name": "장안나",
+        "link": "https://drive.google.com/drive/folders/1qMwriAVOyT64c6_WlznZeK4IW_GkUCCA?usp=drive_link",
+        "artworks": ["Shape 2", "Shape 3", "Shape 4"]
+      },
+      {
+        "name": "전지수",
+        "link": "https://drive.google.com/drive/folders/1JJ2XPqR_zSrVbRbeRlTgi_v67YIOGBsO?usp=drive_link",
+        "artworks": ["S#6", "S#8", "S#10"]
+      },
+      {
+        "name": "조윤주",
+        "link": "https://drive.google.com/drive/folders/1Wg2Xyasu_3POpvdMUEu9AdLovv0_mBYL?usp=drive_link",
+        "artworks": ["(w)hole", "barrier"]
+      },
+      {
+        "name": "최승아",
+        "link": "https://drive.google.com/drive/folders/1HD9CqFFpQqH386T3AgsZYtTGH8QehIXY?usp=drive_link",
+        "artworks": [
+          "tumor: affection_1",
+          "tumor: affection_2",
+          "tumor: affection_3"
+        ]
+      },
+      {
+        "name": "최연주",
+        "link": "https://drive.google.com/drive/folders/1CmZdwHEnu4Bc0tlFxHgf_2vZAV4eSguK?usp=drive_link",
+        "artworks": ["묘연한 0픽셀_1", "묘연한 0픽셀_2", "묘연한 0픽셀_3"]
+      },
+      {
+        "name": "한수정",
+        "link": "https://drive.google.com/drive/folders/1Re7mGaiKGz2Q8GKSrObFe_9zwFsTBo35?usp=drive_link",
+        "artworks": ["Ho’me’"]
+      },
+      {
+        "name": "황예진",
+        "link": "https://drive.google.com/drive/folders/1soO7uqgQ88GHaBuT63gVrxPwgLQjmQHR?usp=drive_link",
+        "artworks": ["파각"]
       }
     ]
   }
