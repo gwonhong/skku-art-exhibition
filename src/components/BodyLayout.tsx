@@ -6,9 +6,11 @@ export default function BodyLayout({
   rightPane: JSX.Element;
 }>) {
   return (
-    <body className={"flex h-screen"}>
-      <div className="h-full overflow-y-auto pr-4">{leftPane}</div>
-      <div className="h-full overflow-y-auto flex-1 border-l border-black relative">
+    <body className={"flex h-screen overflox-x-auto"}>
+      <div className="h-full overflow-y-scroll">
+        {leftPane}
+      </div>
+      <div className="h-full overflow-y-scroll flex-1 relative">
         {rightPane}
       </div>
     </body>
