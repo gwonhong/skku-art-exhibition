@@ -8,7 +8,7 @@ import NavBar from "@/components/NavBar";
 
 function convertGoogleDriveLink(link: string) {
   const googleDriveFolderRegex =
-    /https:\/\/drive\.google\.com\/drive\/folders\/(?<googleDriveFolderId>[a-zA-Z0-9_-]+)\?usp=share_link/;
+    /https:\/\/drive\.google\.com\/drive\/folders\/(?<googleDriveFolderId>[a-zA-Z0-9_-]+)\?.*/;
   const googleDriveFolderId = link.match(googleDriveFolderRegex)?.groups
     ?.googleDriveFolderId;
 

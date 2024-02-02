@@ -21,7 +21,7 @@ export default function Page({
 
   return (
     <body className={"flex h-screen"}>
-      <div className="h-full overflow-y-auto text-right pr-4">
+      <div className="h-full overflow-y-auto">
         <NavBar
           currentExhibitionDate={params.exhibitionDate}
           updateIframeSrc={updateIframeSrc}
