@@ -10,18 +10,32 @@ export default function Page({
     exhibitionDate: string;
   };
 }) {
-  const [iframeSrc, setIframeSrc] = useState(""); // Initialize the state for iframe src
+  const [iframeSrc, setIframeSrc] = useState("");
+  const [iframeLoading, setIframeLoading] = useState(false);
+
+  function updateIframeSrc(src: string) {
+    if (src === iframeSrc) return;
+    setIframeSrc(src);
+    setIframeLoading(true);
+  }
 
   return (
     <body className={"flex h-screen"}>
       <div className="h-full overflow-y-auto text-right pr-4">
         <NavBar
           currentExhibitionDate={params.exhibitionDate}
-          setIframeSrc={setIframeSrc}
+          updateIframeSrc={updateIframeSrc}
         />
       </div>
-      <div className="h-full overflow-y-auto flex-1 border-l border-black">
-        <iframe className="w-full h-full" src={iframeSrc} />
+      <div className="h-full overflow-y-auto flex-1 border-l border-black relative">
+        {iframeLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-300 opacity-60"></div>
+        )}
+        <iframe
+          className="w-full h-full"
+          src={iframeSrc}
+          onLoad={() => setIframeLoading(false)}
+        />
       </div>
     </body>
   );

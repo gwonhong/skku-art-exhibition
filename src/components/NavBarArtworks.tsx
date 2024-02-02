@@ -14,10 +14,10 @@ function convertGoogleDriveLink(link: string) {
 
 export default function NavBar({
   currentExhibitionDate,
-  setIframeSrc,
+  updateIframeSrc,
 }: {
   currentExhibitionDate: string;
-  setIframeSrc: (src: string) => void;
+  updateIframeSrc: (src: string) => void;
 }) {
   const contact: Contact = contactJson;
   const exhibitions: Exhibition[] = exhibitionJson;
@@ -75,7 +75,7 @@ export default function NavBar({
               <tr
                 key={`artist-${artistIndex}-artwork-${artworkIndex}`}
                 className={"cursor-pointer" + (artistIndex % 2 ? " bg-[--color-2]" : "")}
-                onClick={link ? () => setIframeSrc(link) : undefined}
+                onClick={link ? () => updateIframeSrc(link) : undefined}
               >
                 {artworkIndex === 0 ? (
                   <>
