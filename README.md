@@ -2,15 +2,23 @@
 
 2023년부터 시작하여, 이후 매년 있을 전시회 작품들을 아카이빙 하는 웹사이트 입니다.
 
-## 전시회 목록 파일 구조
+<img width="960" alt="image" src="https://github.com/gwonhong/skku-art-exhibition/assets/75533669/92a26241-1ea7-46e0-a015-d7145348ec64">
+
+감상을 원하는 전시회 - 작품 순으로 클릭하면 해당하는 구글 드라이브 폴더를 보여줍니다.
+
+## 전시회 정보 관리를 위한 파일 구조
 
 ### `/src/contact.json`
+
+#### Contact type definition
 
 ```TypeScript
 export type Contact = {
   [key: string]: string;
 };
 ```
+
+#### JSON file example
 
 ```JSON
 {
@@ -21,6 +29,8 @@ export type Contact = {
 ```
 
 ### `/src/exhibitions.json`
+
+#### Artist, Exhibition type definition
 
 ```TypeScript
 export type Artist = {
@@ -39,6 +49,8 @@ export type Exhibitions = {
   [key: string]: Exhibition;
 };
 ```
+
+#### JSON file example
 
 ```JSON
 [
